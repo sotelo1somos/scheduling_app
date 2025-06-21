@@ -50,3 +50,4 @@ end
 # Uncomment the following line if you're running Rails
 # on a native Windows system:
 # gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tailwindcss-rails", "~> 4.2"
