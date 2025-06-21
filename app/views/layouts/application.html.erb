@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SchedulingApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
   </head>
-
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <header class="bg-gray-800 text-white sticky top-0 shadow">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <%= link_to "Scheduling App", root_path, class: "text-xl font-bold" %>
+    <nav>
+      <ul class="flex gap-6">
+        <li><%= link_to "Inicio", root_path, class: "hover:underline" %></li>
+        <li><%= link_to "Ayuda", "#", class: "hover:underline" %></li>
+        <li><%= link_to "Iniciar sesión", new_user_session_path, class: "hover:underline" %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+    <div class="container">
       <%= yield %>
-    </main>
+    </div>
   </body>
 </html>
