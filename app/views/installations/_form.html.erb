@@ -1,0 +1,70 @@
+<div class="pl-2 flex justify-start items-start mb-6" style="margin-top: 20px;">
+  <%= link_to root_path do %>
+    <%= image_tag "somos_logo.jpg", alt: "Logo Somos", style: "height: 24px; width: auto;" %>
+  <% end %>
+</div>
+<div class="mt-8"></div>
+<div class="flex justify-center mt-20">
+  <div class="bg-white bg-opacity-60 backdrop-blur-sm p-8 rounded-lg shadow-xl w-full max-w-xl text-black">
+    <h1 class="text-2xl font-bold mb-6 text-center">
+      <%= installation.new_record? ? "Nueva Instalación" : "Editar Instalación" %>
+    </h1>
+
+    <%= form_with model: installation, local: true do |f| %>
+      <% if installation.errors.any? %>
+        <div class="mb-4 text-red-600">
+          <h2><%= pluralize(installation.errors.count, "errores") %> impidieron guardar la instalación:</h2>
+          <ul class="list-disc pl-5">
+            <% installation.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-4">
+        <%= f.label :customer_name, "Cliente", class: "block font-semibold mb-1" %>
+        <%= f.text_field :customer_name, class: "form-input w-full rounded px-3 py-2 border border-gray-300" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :address, "Dirección", class: "block font-semibold mb-1" %>
+        <%= f.text_field :address, class: "form-input w-full rounded px-3 py-2 border border-gray-300" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :starts_at, "Hora inicio", class: "block font-semibold mb-1" %>
+        <%= f.datetime_select :starts_at,
+              minute_step: 60,
+              discard_seconds: true,
+              start_hour: 8,
+              end_hour: 18,
+              class: "text-black" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :ends_at, "Hora finalización", class: "block font-semibold mb-1" %>
+        <%= f.datetime_select :ends_at,
+              minute_step: 60,
+              discard_seconds: true,
+              start_hour: 8,
+              end_hour: 18,
+              class: "text-black" %>
+      </div>  
+
+      <div class="mb-4">
+        <%= f.label :technician_id, "Técnico", class: "block font-semibold mb-1" %>
+        <%= f.collection_select :technician_id, Technician.all, :id, :name, prompt: "Selecciona un técnico",
+              class: "form-select w-full rounded px-3 py-2 border border-gray-300" %>
+      </div>
+
+      <div class="mt-6">
+        <%= f.submit "Guardar instalación", class: "text-blue-600 hover:underline text-black font-bold py-2 px-4 rounded w-full" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-4">
+      <%= link_to "Volver al listado", dashboard_path, class: "text-blue-600 hover:underline" %>
+    </div>
+  </div>
+</div>

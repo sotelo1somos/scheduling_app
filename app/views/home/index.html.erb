@@ -1,0 +1,36 @@
+<div class="pl-2 flex justify-start items-start mb-6" style="margin-top: 20px;">
+  <%= link_to root_path do %>
+    <%= image_tag "somos_logo.jpg", alt: "Logo Somos", style: "height: 24px; width: auto;" %>
+  <% end %>
+</div>
+<div class="relative min-h-screen flex flex-col justify-start items-center text-white px-4">
+
+  <div class="absolute inset-0 bg-transparent bg-opacity-90 z-0"></div>
+
+  <div class="z-10 text-center">
+    <h1 class="text-2xl md:text-3xl font-bold mb-10">
+      ¡Bienvenido al Agendador de instalaciones de Somos Internet!
+    </h1>
+
+    <p class="text-lg md:text-xl mb-10 max-w-xl mx-auto font-bold">
+      Gestiona, asigna y visualiza instalaciones aquí.
+    </p>
+
+    <div class="flex gap-6 justify-center">
+      <% if admin_user_signed_in? %>
+        <%= link_to "Dashboard", dashboard_path,
+            class: "border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition" %>
+
+        <%= button_to "Cerrar sesión", destroy_admin_user_session_path,
+            method: :delete,
+            form: { class: "inline" },
+            class: "border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition bg-transparent text-white" %>
+      <% else %>
+        <%= link_to "Registrarse", new_admin_user_registration_path,
+            class: "border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition" %>
+        <%= link_to "Iniciar sesión", new_admin_user_session_path,
+            class: "border border-white px-6 py-2 rounded-full hover:bg-white hover:text-black transition" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-  root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root "home#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Devise
+  devise_for :admin_users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'sign_up'
+  }
+
+  # Dashboard
+  resource :dashboard, only: [:show]  
+
+  # Técnicos
+  resources :technicians, only: [:index, :show]
+  get "technicians/:id/timetable", to: "technicians#timetable", as: "technician_timetable"
+
+  # Instalaciones
+  resources :installations
 end

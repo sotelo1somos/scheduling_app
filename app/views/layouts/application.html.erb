@@ -4,30 +4,26 @@
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-      </script>
-    <![endif]-->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= javascript_include_tag "chartkick" %>
   </head>
-  <body>
-    <header class="bg-gray-800 text-white sticky top-0 shadow">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <%= link_to "Scheduling App", root_path, class: "text-xl font-bold" %>
-    <nav>
-      <ul class="flex gap-6">
-        <li><%= link_to "Inicio", root_path, class: "hover:underline" %></li>
-        <li><%= link_to "Ayuda", "#", class: "hover:underline" %></li>
-        <li><%= link_to "Iniciar sesión", new_user_session_path, class: "hover:underline" %></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-    <div class="container">
+
+  <body class="<%= controller_name == 'dashboards' && action_name == 'show' ? 'bg-black' : 'min-h-screen bg-cover bg-center bg-no-repeat' %>" style="<%= controller_name == 'dashboards' && action_name == 'show' ? '' : "background-image: url(#{asset_path('router_fondo.jpg')})" %>">
+    <!-- <header class="bg-black h-20 flex items-center pl-5 pt-5">
+      <%= link_to root_path do %>
+        <%= image_tag "somos_logo.jpg", alt: "Logo Somos", class: "h-4 w-auto" %>
+      <% end %>
+    </header> -->
+
+  <main class="min-h-screen pt-16">
+    <div class="max-w-7xl mx-auto px-4">
       <%= yield %>
     </div>
+  </main>
   </body>
 </html>

@@ -21,6 +21,9 @@ gem "jbuilder",                   "2.11.5"
 gem "puma",                       "5.6.4"
 gem "bootsnap",                   "1.12.0", require: false
 gem "pg",                         "1.3.5"
+gem "tailwindcss-rails",          "~> 4.2"
+gem "chartkick"
+gem "groupdate"
 
 group :development, :test do
   #gem "sqlite3", "~> 1.4"
@@ -50,4 +53,3 @@ end
 # Uncomment the following line if you're running Rails
 # on a native Windows system:
 # gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-gem "tailwindcss-rails", "~> 4.2"

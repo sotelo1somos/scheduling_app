@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    models:
+      installation: "Instalación"
+      technician: "Técnico"
+    attributes:
+      installation:
+        customer_name: "Nombre del cliente"
+        address: "Dirección"
+        starts_at: "Fecha y hora de inicio"
+        ends_at: "Fecha y hora de fin"
+        technician_id: "Técnico asignado"
+  errors:
+    messages:
+      blank: "no puede estar en blanco"
+      taken: "ya está en uso"
+      record_invalid: "La validación falló: %{errors}"

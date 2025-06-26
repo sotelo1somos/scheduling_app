@@ -1,0 +1,38 @@
+<div class="pl-2 flex justify-start items-start mb-6" style="margin-top: 20px;">
+  <%= link_to root_path do %>
+    <%= image_tag "somos_logo.jpg", alt: "Logo Somos", style: "height: 24px; width: auto;" %>
+  <% end %>
+</div>
+<h2 class="text-2xl font-bold text-center mb-6 text-white">Iniciar sesión</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="space-y-4 max-w-md mx-auto bg-white p-6 shadow rounded">
+
+    <div>
+      <%= f.label :email, class: "block text-gray-700" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mt-1 block w-full px-3 py-2 border rounded text-black" %>
+    </div>
+
+    <div>
+      <%= f.label :password, class: "block text-gray-700" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "mt-1 block w-full px-3 py-2 border rounded" %>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <div>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+      <%= link_to "¿Olvidaste tu contraseña?", new_password_path(resource_name), class: "text-sm text-blue-600 hover:underline" %>
+    </div>
+
+    <div>
+      <%= f.submit "Iniciar sesión", class: "w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700" %>
+    </div>
+
+  </div>
+<% end %>
+
+<div class="text-center mt-4">
+  ¿No tienes una cuenta? <%= link_to "Regístrate", new_registration_path(resource_name), class: "text-blue-600 hover:underline" %>
+</div>
